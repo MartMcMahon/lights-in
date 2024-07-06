@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./button";
 import "./App.css";
 import "./shake.css";
@@ -6,6 +6,10 @@ import "./shake.css";
 const initialGrid = new Array(5).fill(new Array(5).fill(false));
 
 function App() {
+  useEffect(() => {
+    document.title = "Lights In";
+  }, []);
+
   const [gridState, setGridState] = useState(initialGrid);
   const [movesCount, setMovesCount] = useState(0);
   const [isWon, setIsWon] = useState(false);
@@ -100,7 +104,10 @@ function App() {
               ))
             )}
           </div>
-          <div className="moves-counter">Moves: {movesCount}{isWon && " Great Job!"}</div>
+          <div className="moves-counter">
+            Moves: {movesCount}
+            {isWon && " Great Job!"}
+          </div>
         </div>
       </div>
     </>
